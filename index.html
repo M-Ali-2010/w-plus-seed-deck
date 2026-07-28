@@ -1,6 +1,3 @@
-Получаю полный текущий index.html, чтобы переписать адаптивные стили без изменения рабочего десктопа.
-
-Read [](file:///Users/muhammadali/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20%D0%9D%D0%A4%D0%A2/W%2B%20Seed%20Deck/index.html)
 
 <!doctype html>
 <html lang="en">
@@ -394,11 +391,13 @@ Read [](file:///Users/muhammadali/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%
   @media (max-width: 640px) { .screens { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; } }
   @media (max-width: 520px) { .screens { grid-template-columns: 1fr; gap: 18px; } }
   .phone {
-    position: relative; aspect-ratio: 9/16; min-height: 220px; border-radius: 22px;
+    position: relative; aspect-ratio: 9/18.3; min-height: 220px; border-radius: 22px;
     overflow: hidden; filter: drop-shadow(0 14px 28px rgba(0,0,0,.45));
     transition: transform .35s var(--ease), opacity .5s, filter .4s;
     opacity: 0; transform: translateY(40px) scale(.95);
     cursor: pointer; outline: none;
+    background: linear-gradient(165deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+    border: 1px solid var(--line2);
   }
   .phone:focus-visible {
     outline: 3px solid var(--cyan);
@@ -408,15 +407,16 @@ Read [](file:///Users/muhammadali/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%
   .phone.on:hover, .phone.on:focus-visible {
     transform: translateY(-10px) scale(1.03);
     filter: drop-shadow(0 20px 44px rgba(88,243,223,.28));
+    border-color: rgba(88,243,223,.4);
   }
-  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .phone img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
   .phone .cap {
     position: absolute; left: 0; right: 0; bottom: 0;
     padding: 18px 10px 10px; text-align: center;
     font-size: 10px; font-weight: 900; letter-spacing: .11em;
     text-transform: uppercase; color: #fff;
-    background: linear-gradient(transparent, rgba(4,6,16,.95));
-    opacity: 0; transition: opacity .3s;
+    background: linear-gradient(transparent, rgba(4,6,16,.92));
+    opacity: 0; transition: opacity .3s; pointer-events: none;
   }
   .phone:hover .cap, .phone:focus-visible .cap { opacity: 1; }
 
@@ -429,8 +429,12 @@ Read [](file:///Users/muhammadali/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%
     display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;
   }
   @media (max-width: 780px) { .proof { grid-template-columns: 1fr; } }
-  .phone.wide { aspect-ratio: 9/12; min-height: 260px; }
-  .phone.wide img { object-fit: cover; object-position: top; }
+  .phone.wide { aspect-ratio: 9/9.8; min-height: 260px; }
+  .phone.banner {
+    grid-column: 1 / -1; aspect-ratio: auto; min-height: 0;
+    padding: 4px; display: flex; align-items: center; justify-content: center;
+  }
+  .phone.banner img { width: 100%; height: auto; object-fit: contain; }
 
   /* ========== HERO MARK ========== */
   .heromark {
@@ -752,6 +756,9 @@ Read [](file:///Users/muhammadali/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%
       </div>
       <h3 class="proofh rv d2">Verified YouTube Analytics</h3>
       <div class="proof">
+        <div class="phone banner" tabindex="0" role="button" aria-label="View channel overview analytics" data-c="Channel Overview — YouTube Studio">
+          <img src="screens/yt-overview.jpg" alt="YouTube Studio channel overview, 740,429 subscribers" loading="lazy">
+        </div>
         <div class="phone wide" tabindex="0" role="button" aria-label="View audience geography analytics" data-c="Audience by Country — YouTube Analytics">
           <img src="screens/yt-geo.jpg" alt="Audience by country" loading="lazy">
           <div class="cap">Top Countries</div>
@@ -858,7 +865,6 @@ Read [](file:///Users/muhammadali/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%
         </div>
         <div class="card rv d1">
           <div class="trow"><div class="l">Round Target</div><div class="v"><span class="hl">US$13,000,000</span></div></div>
-          <div class="trow"><div class="l">Founder</div><div class="v">Ali</div></div>
           <div class="trow"><div class="l">Location</div><div class="v">Kazakhstan</div></div>
           <div class="trow"><div class="l">Contact</div><div class="v"><span class="hl">i@qitq.tech</span></div></div>
         </div>
